@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../img/quetzalcoatl.png" />
+    <title>Semana Cultural - Tercera Sección de San Pablo Huitzo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "huitzo-brown": "#4a3610",
+              "huitzo-gold": "#b8860b",
+              "huitzo-light-gold": "#d4af37",
+              "huitzo-dark-gold": "#996515",
+              "huitzo-pale-gold": "#e6c770",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .navbar-gradient {
+        background: linear-gradient(90deg, #b8860b, #d4af37, #b8860b);
+        position: relative;
+        overflow: hidden;
+      }
+      .navbar-gradient::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.3) 0%,
+          transparent 60%
+        );
+        animation: lightRotation 10s infinite linear;
+      }
+      @keyframes lightRotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .countdown {
+        font-size: 1.5em;
+        color: #3a2a02;
+      }
+      .gold-border {
+        border: 2px solid #b8860b;
+        box-shadow: 0 0 10px #d4af37;
+      }
+    </style>
+  </head>
+  <body class="bg-huitzo-brown text-white">
+    <header
+      class="navbar-gradient text-huitzo-brown p-4 relative sticky top-0 z-50"
+    >
+      <nav class="container mx-auto">
+        <div class="flex justify-between items-center">
+          <h1 class="text-3xl font-bold z-10 relative">HUITZO</h1>
+          <button
+            id="menuToggle"
+            class="lg:hidden z-10 relative"
+            aria-label="Toggle menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <ul
+          id="mobileMenu"
+          class="hidden lg:flex lg:space-x-4 lg:justify-end mt-4 lg:mt-0 z-10 relative"
+        >
+          <li>
+            <a
+              href="../index.html"
+              class="block py-2 hover:underline hover:text-huitzo-pale-gold transition-colors duration-300"
+              >INICIO</a
+            >
+          </li>
+          <li>
+            <a
+              href="progs/semanacultural.html"
+              class="block py-2 hover:underline hover:text-huitzo-pale-gold transition-colors duration-300"
+              >SEMANA CULTURAL</a
+            >
+          </li>
+          <li>
+            <a
+              href="eventossociales.html"
+              class="block py-2 hover:underline hover:text-huitzo-pale-gold transition-colors duration-300"
+              >EVENTOS SOCIALES</a
+            >
+          </li>
+          <li>
+            <a
+              href="bandasparticipantes.html"
+              class="block py-2 hover:underline hover:text-huitzo-pale-gold transition-colors duration-300"
+              >BANDAS PARTICIPANTES</a
+            >
+          </li>
+          <li class="block lg:hidden">
+            <p class="opacity-50">
+              Por Familia - Acevedo Flores - Flores Cruz -
+            </p>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container mx-auto mt-8 px-4">
+      <section
+        class="relative h-96 overflow-hidden rounded-lg shadow-xl gold-border"
+      >
+        <img
+          src="../img/icono_intercultural.png"
+          alt="Imagen representativa de la Semana Cultural"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+        >
+          <h2
+            class="text-4xl font-bold text-huitzo-light-gold text-center shadow-lg"
+          >
+            Semana Cultural 2024
+          </h2>
+        </div>
+      </section>
+
+      <section
+        class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <div
+          class="bg-huitzo-dark-gold text-white p-6 rounded-lg shadow-md transition-transform hover:scale-105 hover:bg-huitzo-gold"
+        >
+          <img
+            src="../img/imgcanto.jpg"
+            alt="Taller de Canto"
+            class="w-full h-48 object-cover mb-4 rounded gold-border"
+          />
+          <h3 class="text-xl font-semibold mb-2">
+            Participación del Taller de Canto
+          </h3>
+          <p>Fecha: 1 de Septiembre, 2024</p>
+          <div class="countdown" id="countdown1"></div>
+        </div>
+        <div
+          class="bg-huitzo-dark-gold text-white p-6 rounded-lg shadow-md transition-transform hover:scale-105 hover:bg-huitzo-gold"
+        >
+          <img
+            src="../img/imgmarimba.jpg"
+            alt="Taller de Marimba"
+            class="w-full h-48 object-cover mb-4 rounded gold-border"
+          />
+          <h3 class="text-xl font-semibold mb-2">
+            Presentación del Taller de Marimba
+          </h3>
+          <p>Fecha: 2 de Septiembre, 2024</p>
+          <div class="countdown" id="countdown2"></div>
+        </div>
+        <div
+          class="bg-huitzo-dark-gold text-white p-6 rounded-lg shadow-md transition-transform hover:scale-105 hover:bg-huitzo-gold"
+        >
+          <img
+            src="../img/imgacrodanza.jpg"
+            alt="Taller de Piano y Acrodanza"
+            class="w-full h-48 object-cover mb-4 rounded gold-border"
+          />
+          <h3 class="text-xl font-semibold mb-2">
+            Presentación del Taller de Piano y Acrodanza
+          </h3>
+          <p>Fecha: 3 de Septiembre, 2024</p>
+          <div class="countdown" id="countdown3"></div>
+        </div>
+        <div
+          class="bg-huitzo-dark-gold text-white p-6 rounded-lg shadow-md transition-transform hover:scale-105 hover:bg-huitzo-gold"
+        >
+          <img
+            src="../img/imgensamble.jpg"
+            alt="Taller de Ensamble"
+            class="w-full h-48 object-cover mb-4 rounded gold-border"
+          />
+          <h3 class="text-xl font-semibold mb-2">
+            Participacion del Taller de Ensamble
+          </h3>
+          <p>Fecha: 4 de Septiembre, 2024</p>
+          <div class="countdown" id="countdown4"></div>
+        </div>
+        <div
+          class="bg-huitzo-dark-gold text-white p-6 rounded-lg shadow-md transition-transform hover:scale-105 hover:bg-huitzo-gold"
+        >
+          <img
+            src="../img/imgfinal.jpg"
+            alt="Presentación final"
+            class="w-full h-48 object-cover mb-4 rounded gold-border"
+          />
+          <h3 class="text-xl font-semibold mb-2">
+            Presentación final de la Semana Cultural
+          </h3>
+          <p>Fecha: 5 de Septiembre, 2024</p>
+          <div class="countdown" id="countdown5"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-huitzo-gold text-huitzo-brown mt-12 py-6">
+      <div class="container mx-auto text-center">
+        <p>
+          &copy; 2024 Huitzo. Por Familia - Acevedo Flores - Flores Cruz -.
+          <br />
+          En colaboracion con DavC
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 1024) {
+          mobileMenu.classList.remove("hidden");
+        } else {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+
+      function initializeCountdown(elementId, eventDate) {
+        const countdownElement = document.getElementById(elementId);
+        const countDownDate = new Date(eventDate).getTime();
+
+        const countdownFunction = setInterval(function () {
+          const now = new Date().getTime();
+          const distance = countDownDate - now;
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+          if (distance < 0) {
+            clearInterval(countdownFunction);
+            countdownElement.innerHTML = "¡El evento ha comenzado!";
+          }
+        }, 1000);
+      }
+
+      initializeCountdown("countdown1", "Sep 1, 2024 10:00:00");
+      initializeCountdown("countdown2", "Sep 2, 2024 14:00:00");
+      initializeCountdown("countdown3", "Sep 3, 2024 16:00:00");
+      initializeCountdown("countdown4", "Sep 4, 2024 19:00:00");
+      initializeCountdown("countdown5", "Sep 5, 2024 18:00:00");
+    </script>
+  </body>
+</html>
